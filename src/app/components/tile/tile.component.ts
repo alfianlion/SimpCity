@@ -9,8 +9,7 @@ import { GameComponent } from 'src/app/pages/game/game.component';
 export class TileComponent {
   
   buildingChoice = "HWY"
-  constructor(gameState : GameComponent){
-    // this.buildingChoice = gameState.buildingChoices[0]
+  constructor(){
   }
 
 
