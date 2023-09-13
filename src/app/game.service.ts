@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 // @Injectable({
 //   providedIn: 'root'
@@ -11,6 +12,9 @@ export interface BuildingSetUp{
 
 export class GameService {
 
+  private building = new BehaviorSubject('');
+  getBuildingOption = this.building.asObservable()
+
   totalbuildings = [
     {building:"BCH", total:8},
     {building:"FAC", total:8},
@@ -21,4 +25,17 @@ export class GameService {
 
   constructor() { }
 
+  resetBuildings() : BuildingSetUp[]{
+    return this.totalbuildings = [
+      {building:"BCH", total:8},
+      {building:"FAC", total:8},
+      {building:"HSE", total:8},
+      {building:"SHP", total:8},
+      {building:"HWY", total:8},
+    ]
+  }
+
+  setBuildingOption(building: string){
+    this.building.next(building)
+  }
 }

@@ -9,21 +9,40 @@ import { BuildingSetUp, GameService } from 'src/app/game.service';
 
 export class GameComponent {
   buildingsAvailable : BuildingSetUp[]
-  buildingPlaced = null
+  buildingPlaced = ''
   public buildingChoices : string[] = []
 
-  constructor(gameservice: GameService) {
+  constructor(private gameservice: GameService) {
     this.buildingsAvailable = gameservice.totalbuildings
+    this.gameservice.getBuildingOption.subscribe(building => this.buildingPlaced = building)
   } 
 
   initGame(){
+    this.buildingsAvailable = this.gameservice.resetBuildings()
     this.buildingChoices = []
-    this.buildingPlaced = null
+    this.buildingPlaced = ''
+    this.randomizedBuildings()
+    this.removeBuildings(this.buildingChoices)
+    this.filterBuildings();
   }
 
   newGame() : void {
     this.initGame()
+  }
+
+  selectedOption(building: string){
+    this.buildingPlaced = building
+    this.buildingChoices = []
     this.randomizedBuildings()
+    this.removeBuildings(this.buildingChoices)
+    this.filterBuildings();
+    this.setBuildingOption()
+    console.log(`${building} selected`)
+  }
+
+  setBuildingOption(){
+    console.log('Building Set');
+    this.gameservice.setBuildingOption(this.buildingPlaced)
   }
 
   randomizedBuildings() : string[]{
@@ -32,8 +51,6 @@ export class GameComponent {
 
     this.buildingChoices.push(this.buildingsAvailable[firstRandomNumber].building)   
     this.buildingChoices.push(this.buildingsAvailable[secondRandomNumber].building)
-
-    this.removeBuildings(this.buildingChoices)
 
     return this.buildingChoices
   }
@@ -46,8 +63,6 @@ export class GameComponent {
         }        
       }
     }
-
-    this.filterBuildings();
 
     console.log(choices);
     console.log(this.buildingsAvailable);

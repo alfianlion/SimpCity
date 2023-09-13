@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GameComponent } from 'src/app/pages/game/game.component';
+import { Subscription } from 'rxjs';
+import { GameService } from 'src/app/game.service';
 
 @Component({
   selector: 'app-tile',
@@ -8,9 +9,9 @@ import { GameComponent } from 'src/app/pages/game/game.component';
 })
 export class TileComponent {
   
-  buildingChoice = "HWY"
-  constructor(){
+  buildingPlaced = ''
+
+  constructor(private gameservice:GameService){
+    // this.gameservice.getBuildingOption.subscribe(building => this.buildingPlaced = building)
   }
-
-
 }
