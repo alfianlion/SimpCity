@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BuildingSetUp, GameService } from 'src/app/game.service';
+import { GameComponent } from 'src/app/pages/game/game.component';
 
 @Component({
   selector: 'app-tile',
@@ -7,16 +7,11 @@ import { BuildingSetUp, GameService } from 'src/app/game.service';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent {
-  buildingsAvailable : BuildingSetUp[]
-  buildingPlaced = null;
-
-  constructor(gameservice: GameService) {
-    this.buildingsAvailable = gameservice.totalbuildings
-  } 
-
-  randomizedBuildings() : number {
-    console.log(Math.floor(Math.random()*this.buildingsAvailable.length));    
-    return Math.floor(Math.random()*this.buildingsAvailable.length)
-    // return 0;
+  
+  buildingChoice = "HWY"
+  constructor(gameState : GameComponent){
+    // this.buildingChoice = gameState.buildingChoices[0]
   }
+
+
 }
