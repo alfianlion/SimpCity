@@ -1,5 +1,5 @@
-<section>
-    <div>
-        <app-tile></app-tile>
+<div class="flex justify-center flex-wrap max-w-2xl">
+    <div class="w-1/4" *ngFor="let tile of board">
+        <app-tile [tile]="tile"></app-tile>
     </div>
-</section>
+</div>

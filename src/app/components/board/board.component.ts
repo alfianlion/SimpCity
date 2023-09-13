@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameService } from 'src/app/game.service';
 
 @Component({
   selector: 'app-board',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
-
+  board : {}[] = []
+  constructor(gameservice: GameService){
+    this.board = gameservice.createBoard();
+  }
 }

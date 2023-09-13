@@ -12,6 +12,7 @@ export interface BuildingSetUp{
 
 export class GameService {
 
+  public board = []
   private building = new BehaviorSubject('');
   getBuildingOption = this.building.asObservable()
 
@@ -37,5 +38,15 @@ export class GameService {
 
   setBuildingOption(building: string){
     this.building.next(building)
+  }
+
+  createBoard(){
+    let board = [];
+    for (let i = 0; i < 16; i++) {
+      board.push({id: i, state:null})
+    }
+    console.log(board);
+    
+    return board
   }
 }
