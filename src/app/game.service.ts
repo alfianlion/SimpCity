@@ -43,7 +43,7 @@ export class GameService {
   createBoard(){
     let board = [];
     for (let i = 0; i < 16; i++) {
-      board.push({id: i, state:null})
+      board.push({id: i, buildingPlaced:null})
     }
     console.log(board);
     

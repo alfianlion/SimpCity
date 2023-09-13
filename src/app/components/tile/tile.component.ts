@@ -10,9 +10,9 @@ export class TileComponent {
   
   @Input() tile: any;
 
-  buildingPlaced = 'hi'
+  buildingPlaced = ''
 
   constructor(private gameservice:GameService){
-    // this.gameservice.getBuildingOption.subscribe(building => this.buildingPlaced = building)
+    this.gameservice.getBuildingOption.subscribe(building => this.buildingPlaced = building)
   }
 }

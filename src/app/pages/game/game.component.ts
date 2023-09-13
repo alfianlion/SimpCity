@@ -22,6 +22,7 @@ export class GameComponent {
     this.buildingChoices = []
     this.buildingPlaced = ''
     this.randomizedBuildings()
+    this.setBuildingOption()
     this.removeBuildings(this.buildingChoices)
     this.filterBuildings();
   }
@@ -31,6 +32,10 @@ export class GameComponent {
   }
 
   selectedOption(building: string){
+    // let selectState = true
+    // while (selectState) {
+      
+    // }
     this.buildingPlaced = building
     this.buildingChoices = []
     this.randomizedBuildings()
